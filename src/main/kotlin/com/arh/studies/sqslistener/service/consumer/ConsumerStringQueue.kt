@@ -9,14 +9,14 @@ import org.springframework.messaging.handler.annotation.Headers
 import org.springframework.stereotype.Service
 
 @Service
-class Consumer1Queue(private val sqsTemplate: SqsTemplate) {
+class ConsumerStringQueue(private val sqsTemplate: SqsTemplate) {
 
-  private val logger = KotlinLogging.logger {}
+    private val logger = KotlinLogging.logger {}
 
-  @SqsListener(id = "my-consumer", value = ["queue-1"], acknowledgementMode = ON_SUCCESS)
-  fun listener(message: Message<String>, @Headers headers: Map<String, Any>) {
-    //    val replyChannel = message.headers.replyChannel
-    //    val errorChannel = message.headers.errorChannel
-    logger.info { "Message received: ${message.payload}" }
-  }
+    @SqsListener(id = "queue-1-consumer", value = ["queue-1"])
+    fun listener(message: String, @Headers headers: Map<String, Any>) {
+        //    val replyChannel = message.headers.replyChannel
+        //    val errorChannel = message.headers.errorChannel
+        logger.info { "Message received: $message" }
+    }
 }

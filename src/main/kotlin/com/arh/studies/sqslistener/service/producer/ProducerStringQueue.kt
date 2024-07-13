@@ -5,7 +5,7 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Service
 
 @Service
-class Producer1Queue(private val sqsTemplate: SqsTemplate) {
+class ProducerStringQueue(private val sqsTemplate: SqsTemplate) {
 
   private var i = 0
   private val logger = KotlinLogging.logger {}
@@ -17,7 +17,7 @@ class Producer1Queue(private val sqsTemplate: SqsTemplate) {
       logger.info { "Message sent: Message $i" }
       sqsTemplate.send() { to -> to.queue("queue-1").payload("Message ${i++}") }
       logger.info { "Message sent: Message $i" }
-      Thread.sleep(2000)
+      Thread.sleep(1000)
     }
   }
 

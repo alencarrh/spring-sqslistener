@@ -1,6 +1,6 @@
 package com.arh.studies.sqslistener.controller
 
-import com.arh.studies.sqslistener.service.producer.Producer1Queue
+import com.arh.studies.sqslistener.service.producer.ProducerStringQueue
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -9,7 +9,7 @@ import java.util.concurrent.CompletableFuture
 
 @RestController
 @RequestMapping("/producer")
-class ProducerController(private val producer: Producer1Queue) {
+class ProducerController(private val producer: ProducerStringQueue) {
 
     private val logger = KotlinLogging.logger {}
 
